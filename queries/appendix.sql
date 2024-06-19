@@ -1,0 +1,14 @@
+-- Appendix
+-- Explanations of selected columns that are confusing
+-- Table: SUBMISSION
+-- filing_date: the date the report being filed. Most within current quarter.
+-- periodofreport: indicate the quarter the report is for, in the form of date. Q1-03/31;  Q2-06/30; Q3-09/30; Q4–12/31
+-- Table: COVERPAGE
+-- reporttype: ignore 13F notice type
+-- reportcalendarorquarter: same as periodofreport in SUBMISSION.
+-- isamendment: indicate whether this report is for amendment
+-- amendmenttype: can be RESTATEMENT or NEW HOLDINGS
+-- R
+-- Notes:
+-- The first such filing is due within 45 days after the end of the fourth quarter of the calendar year, i.e., the quarter ending December 31 of the same calendar year that you meet the $100 million filing threshold. The filing is due within 45 days after December 31, or, stated differently, by February 14 of the subsequent calendar year.
+-- Rule 13f-1(a)(1) also requires that you submit three additional Form 13F filings during the subsequent calendar year. Each filing is due within 45 days after the end of the calendar quarter, i.e., the calendar quarters that end on March 31, June 30, and September 30.
