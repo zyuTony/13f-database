@@ -35,3 +35,5 @@ venv/
 
 # MyPy
 .mypy_cache/
+
+not_upload_to_github/
