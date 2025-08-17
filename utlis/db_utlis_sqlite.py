@@ -56,7 +56,7 @@ def insert_data_from_tsv(conn, directory, table_name):
                     # Commit every 1000 rows for better performance
                     if row_count % 1000 == 0:
                         conn.commit()
-                        print(f"Inserted {row_count} rows for {table_name}...")
+                        # print(f"Inserted {row_count} rows for {table_name}...")
             
             # Final commit
             conn.commit()
@@ -124,7 +124,7 @@ def create_table_coverpage(conn):
         form13ffilenumber TEXT,
         crdnumber TEXT,
         secfilenumber TEXT,
-        provideinfoforinstructions TEXT NOT NULL,
+        provideinfoforinstruction5 TEXT NOT NULL,
         additionalinformation TEXT,
         PRIMARY KEY (accession_number)
         );
@@ -215,13 +215,13 @@ def create_table_othermanager2(conn):
         create_table_query = '''
         CREATE TABLE IF NOT EXISTS othermanager2 (
         accession_number TEXT NOT NULL,
-        sequence_number INTEGER NOT NULL,
+        sequencenumber INTEGER NOT NULL,
         cik TEXT,
         form13ffilenumber TEXT,
         crdnumber TEXT,
         secfilenumber TEXT,
         name TEXT NOT NULL,
-        PRIMARY KEY (accession_number, sequence_number, name)
+        PRIMARY KEY (accession_number, sequencenumber, name)
         );
         '''
         cursor.execute(create_table_query)

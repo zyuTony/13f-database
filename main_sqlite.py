@@ -40,8 +40,8 @@ def main():
     
     download_url_list = ['https://www.sec.gov/files/structureddata/data/form-13f-data-sets/'+qtr+'_form13f.zip' for qtr in qtrs]
     
-    table_names = ["SUBMISSION", "COVERPAGE", "OTHERMANAGER", "OTHERMANAGER2", "SIGNATURE", "SUMMARYPAGE", "INFOTABLE"]
-    
+    # table_names = ["SUBMISSION", "COVERPAGE", "OTHERMANAGER", "OTHERMANAGER2", "SIGNATURE", "SUMMARYPAGE", "INFOTABLE"]
+    table_names = ["OTHERMANAGER2", "COVERPAGE"]
     print(f"Processing {len(download_url_list)} quarters of data...")
     print("=" * 60)
     
