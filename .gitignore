@@ -37,3 +37,5 @@ venv/
 .mypy_cache/
 
 not_upload_to_github/
+
+database/
