@@ -33,7 +33,7 @@ from coverpage group by 1 order by 2 desc;
 
 -- EXAMPLE: report quarter and how many rows in each
 select cusip, count(*)
-from infotable group by 1 order by 2 desc;
+from infotable where putcall = '' group by 1 order by 2 desc;
 
 -- EXAMPLE: report quarter and how many rows in each
 select titleofclass, count(*)
@@ -55,7 +55,7 @@ on a.accession_number=d.accession_number
 where 1=1
 and reportcalendarorquarter ='30-JUN-2024' --'2024-06-30'
 and amendmenttype in ("", 'NEW HOLDINGS')
-and putcall is null
+and putcall = ''
 --and cusip = '364760108' -- use to find specific company
 order by b.accession_number, filingmanager_name, filing_date desc; 
 
@@ -73,7 +73,7 @@ where 1=1
 -- and filingmanager_name in (select filingmanager_name from coverpage where isamendment='Y')
 -- and reportcalendarorquarter ='30-JUN-2024' --'2024-06-30'
 and amendmenttype in ("", 'NEW HOLDINGS')
-and putcall is null
+and putcall = ''
 order by b.accession_number, filingmanager_name, filing_date desc; 
 
 
@@ -95,7 +95,7 @@ join reports_to_keep b
 on a.accession_number=b.accession_number
 where extract(year from b.reportcalendarorquarter) > 2022
 and sshprnamttype = 'SH' 
-and putcall is not null
+and putcall <> ''
 group by 1
 )
 select * from t1  

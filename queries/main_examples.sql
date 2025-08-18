@@ -16,7 +16,7 @@ where 1=1
 and reportcalendarorquarter in ('31-DEC-2024','31-MAR-2025', '30-JUN-2025', '30-SEP-2025', '31-DEC-2025')
 
 and amendmenttype in ('', 'NEW HOLDINGS')
-and putcall is null
+and putcall = ''
 and d.sshprnamttype = 'SH'
 and d.sshprnamt > 0
 order by b.accession_number, filingmanager_name, filing_date desc),
@@ -60,13 +60,14 @@ from raw_t1
 group by 1)
 
 SELECT 
-  n.nameofissuer as stock_holding,
+ coalesce(n.ticker, m.nameofissuer, 'N/A') as ticker, n.securityType, n.securityType2, 
   t.*,
   (CAST(t.sh_2025q1 AS DOUBLE) / NULLIF(CAST(t.sh_2024q4 AS DOUBLE), 0) - 1) AS pct_increase
 FROM raw_t2 t
-JOIN name_mode n USING (cusip)
+LEFT JOIN cusiptable n on t.cusip = n.cusip 
+LEFT JOIN name_mode m on t.cusip = m.cusip
 WHERE (CAST(t.sh_2025q1 AS DOUBLE) / NULLIF(CAST(t.sh_2024q4 AS DOUBLE), 0) - 1) BETWEEN -1.0 AND 5
-  AND t.value_2024q4 > 100000000 
+  AND t.value_2024q4 > 100000000
   AND t.value_2025q1 > 100000000
 ORDER BY pct_increase DESC;
  
